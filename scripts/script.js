@@ -25,7 +25,7 @@ function FetchPorts(){
 //var map = L.map('map').setView([0, 0], 2)
 
 var map = L.map('map')
-        .setView([0, 0], 2)
+        .setView([20, 0], 3)
 
 L.tileLayer(
             'https://api.mapbox.com/styles/v1/maxkuempel/cmlywfg2x001a01smhezzavbb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWF4a3VlbXBlbCIsImEiOiJjbWxmaTRnemgwMjhpM2VxNHY0OWgyZnowIn0.4vT-IDEnXFLYMUFluo4MSw',
@@ -65,7 +65,12 @@ function DisplayPorts(){
             layer.bindTooltip(
                 feature.properties.Name +
                 ", " +
-                feature.properties.Country)
+                feature.properties.Country +
+                ". Total exports:" +
+                Math.round(feature.properties.outflows)
+                + " TEU"
+            )
+                
         },
         pointToLayer: function(feature, coords){
             markerOptions = {
